@@ -73,7 +73,7 @@
                   document.getElementById('inputContainer').style.display = 'none'; // Hide the input container
               })
               .catch(error => {
-                  document.getElementById('saveStatus').innerText = 'Error occurred while saving drawing.';
+                  document.getElementById('saveStatus').innerText = 'A drawing with this name already exists.';
                   console.error('Error:', error);
               });
         });

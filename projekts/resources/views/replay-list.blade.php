@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Drawings</title>
+    <title>Your Drawings</title>
 </head>
 <body>
-    <h1>Your Drawings</h1>
 
     @if($replays->isEmpty())
         <p>You have no drawings yet.</p>
