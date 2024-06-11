@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('mouse_movements', function (Blueprint $table) {
             $table->id();
+            $table->unique(['user_id', 'name']);
             $table->unsignedBigInteger('user_id');
             $table->string('name');
             $table->json('movements');
@@ -27,6 +28,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mouse_movements');
+        Schema::table('mouse_movements', function (Blueprint $table) {
+            $table->dropUnique(['user_id', 'name']);
+        });
     }
 };

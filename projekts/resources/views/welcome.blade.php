@@ -12,15 +12,15 @@
     </style>
 </head>
 <body>
-    <button id="startBtn">Start Tracking</button>
-    <button id="stopBtn" style="display:none;">Stop Tracking</button>
+    <button id="startBtn">Start Drawing</button>
+    <button id="stopBtn" style="display:none;">Stop Drawing</button>
     <canvas id="canvas" width="800" height="600"></canvas>
     <div id="inputContainer" style="display:none;">
-        <input type="text" id="replayName" placeholder="Enter replay name">
-        <button id="saveBtn">Save Replay</button>
+        <input type="text" id="replayName" placeholder="Enter drawing name">
+        <button id="saveBtn">Save Drawing</button>
     </div>
     <div id="saveStatus"></div>
-    <a id="replayBtn" style="display:none;" href="#">Replay Movements</a>
+    <a id="replayBtn" style="display:none;" href="#">Replay Drawing</a>
 
     <script>
         let tracking = false;
@@ -49,7 +49,7 @@
         document.getElementById('saveBtn').addEventListener('click', () => {
             const replayName = document.getElementById('replayName').value;
             if (!replayName) {
-                document.getElementById('saveStatus').innerText = 'Please enter a name for the replay.';
+                document.getElementById('saveStatus').innerText = 'Please enter a name for the drawing.';
                 return;
             }
 
@@ -63,17 +63,17 @@
             }).then(response => response.json())
               .then(data => {
                   if (data.success) {
-                      document.getElementById('saveStatus').innerText = `Movements saved! Replay at /replay/${data.id}`;
+                      document.getElementById('saveStatus').innerText = `Drawing saved!` ;
                       const replayBtn = document.getElementById('replayBtn');
                       replayBtn.href = `/replay/${data.id}`;
                       replayBtn.style.display = 'inline';
                   } else {
-                      document.getElementById('saveStatus').innerText = 'Failed to save movements. Please try again.';
+                      document.getElementById('saveStatus').innerText = 'Failed to save drawing. Please try again.';
                   }
                   document.getElementById('inputContainer').style.display = 'none'; // Hide the input container
               })
               .catch(error => {
-                  document.getElementById('saveStatus').innerText = 'Error occurred while saving movements.';
+                  document.getElementById('saveStatus').innerText = 'Error occurred while saving drawing.';
                   console.error('Error:', error);
               });
         });

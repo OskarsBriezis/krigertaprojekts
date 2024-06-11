@@ -1,3 +1,47 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+    font-family: monospace;
+    --gold: rgb(255, 211, 53);
+    --item-shadow: #3f644d;
+}
+* {
+    font-family:'Courier New', Courier;
+}
+button#startBtn {
+    background-color: green;
+    color: #ffffff;
+    border: 1px solid black;
+}
+button#stopBtn {
+    background-color: red;
+    color: #ffffff;
+    border: 1px solid black;
+}
+button#replayBtn {
+    background-color: green;
+    border: 1px solid black;
+}
+a#drawings {
+    font-weight: bold;
+}
+a#drawings:hover {
+    color: rgb(190, 183, 183);
+}
+a#bck-hom:hover {
+    color: green;
+}
+ul#replay-item {
+    background-color: #e7e3e3;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+p#replay-details {
+    margin-top: 5px;
+    color: #666666;
+}

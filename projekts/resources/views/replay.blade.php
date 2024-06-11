@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,17 +13,17 @@
 </head>
 <body>
     <h1>Replay</h1>
-    <button id="replayBtn">Replay Movements</button>
     <label for="speed">Speed:</label>
     <input type="number" id="speed" value="50" min="1">
+    <button id="replayBtn">Replay Drawing</button>
     <canvas id="canvas" width="800" height="600"></canvas>
     <br>
     <form action="{{ route('replay.delete', ['id' => $replayInfo->id ]) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this replay?');">
         @csrf
         @method('DELETE')
-        <button type="submit">Delete Replay</button>
+        <button id="stopBtn" type="submit">Delete Drawing</button>
     </form>
-    <a href="{{ route('replay.get') }}">Back to Your Replays</a>
+    <a id="bck-hom"href="{{ route('replay.get') }}">Back to Your Drawings</a>
 
     <script>
         const movements = @json(json_decode($movements));
@@ -66,3 +67,4 @@
     </script>
 </body>
 </html>
+    </x-app-layout>

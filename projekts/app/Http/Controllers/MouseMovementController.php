@@ -47,5 +47,29 @@ class MouseMovementController extends Controller
 
         return redirect()->route('replay.get')->with('success', 'Replay deleted successfully.');
     }
+    
+    public function store()
+    {
+        $user = Auth::user();
+
+        // Check if a replay with the same name already exists for this user
+        $existingReplay = MouseMovement::where('user_id', $user->id)
+                                       ->where('name', $request->name)
+                                       ->first();
+
+                                       if ($existingReplay) {
+                                        return redirect()->back()->withErrors(['name' => 'Sorry, a drawing with this name already exists!'])->withInput();
+                                    }
+
+        // Store the replay if no duplicates are found
+        $mouseMovement = new MouseMovement();
+        $mouseMovement->user_id = $user->id;
+        $mouseMovement->name = $request->name;
+        $mouseMovement->movements = $request->movements;
+        $mouseMovement->save();
+
+        return redirect()->route('replay.get')->with('success', 'Replay saved successfully.');
+    }
+    
 }
 
