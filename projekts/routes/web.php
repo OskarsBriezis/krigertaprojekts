@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MouseMovementController;
 
+
+
 Route::middleware(['auth'])->group(function () {
     Route::post('/save-movements', [MouseMovementController::class, 'saveMovements']);
     Route::get('/replay/{id}', [MouseMovementController::class, 'replay'])->name('replay.show');

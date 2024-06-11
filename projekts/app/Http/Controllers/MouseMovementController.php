@@ -32,7 +32,7 @@ class MouseMovementController extends Controller
         // Fetch all replays made by the authenticated user
         $replays = MouseMovement::where('user_id', $user->id)->get();
 
-        return view('replay-list', compact('replays'));
+        return view('replay-list', compact('replays'), ['replays' => $replays, 'user' => $user]);
     }
 
     public function deleteReplay($id)

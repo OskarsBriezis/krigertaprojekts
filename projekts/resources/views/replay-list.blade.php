@@ -16,6 +16,7 @@
                 <li>
                     <a id="drawings" href="{{ url('/replay/' . $replay->id) }}"> {{ $replay->name }}</a>
                     <p id="replay-details">Created at: {{ $replay->created_at->format('Y-m-d H:i:s') }}</p>
+                    <p class="replay-details">Created by: {{ $user->name }}</p>
                 </li>
             @endforeach
         </ul>
